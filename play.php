@@ -37,51 +37,85 @@
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
                     <div id="start">
                     <h1 class="mbr-section-title display-1">Brain.wav</h1>
-                    <p class="mbr-section-lead lead">Generate music based on your brainwaves</p>
-                    <div class="mbr-section-btn"> <a class="btn btn-lg btn-white btn-white-outline" onClick="recordMenu()">Start now</a></div>
-                </div>
-
-                <div id="record">
-                    <h1 class="mbr-section-title display-1">Start by connecting the Muse headband</h1>
-                    <p class="mbr-section-lead lead">Once connected, click the button to record the data</p>
-                    <div class="mbr-section-btn"> <a class="btn btn-lg btn-white btn-white-outline" onClick="playMusic()">Generate</a></div>
-                </div>
+                    <img id="img1" src="http://i.imgur.com/jtkTPvb.gif">
+                    <img id="img2" src="http://bestanimations.com/Science/Gears/loadinggears/loading-gears-animation-3.gif">
+                    <div class="mbr-section-btn"> <a class="btn btn-lg btn-white btn-white-outline" onClick="go_back()">Go back</a></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-
-
-
-
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+ <script src="assets/web/assets/jquery/jquery.min.js"></script>
   <script src="assets/tether/tether.min.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/smooth-scroll/SmoothScroll.js"></script>
   <script src="assets/viewportChecker/jquery.viewportchecker.js"></script>
   <script src="assets/jarallax/jarallax.js"></script>
   <script src="assets/theme/js/script.js"></script>
-  <script type="text/javascript">
-    $("#record").hide();
+<script type="text/javascript">
 
-    function recordMenu(){
-  
-      $("#start").hide();
-  
-    $("#record").show();
-    }
+      $( document ).ready(function() {
+        $('#img2').hide();
+        var sec = Math.floor((Math.random() * 4) + 7);
+        setTimeout(function(){
+            
+      var type = Math.floor((Math.random() * 2) + 1);
+      var str = 'music/brain/';
+
+      if(type == 1)
+        str += '100_';
+
+      var instrument1, instrument2, instrument3, instrument4, instrument5;
+      var number;
+
+      //Bass picker
+      number = Math.floor((Math.random() * 4) + 1);
+      instrument1 = str + 'bass_' + number + '.wav';
+
+      //Drum picker
+      number = Math.floor((Math.random() * 4) + 1);
+      instrument2 = str + 'drum_' + number + '.wav';
+      
+      //Piano picker
+      number = Math.floor((Math.random() * 4) + 1);
+      instrument3 = str + 'piano_' + number + '.wav';
+
+      //Strings picker
+      number = Math.floor((Math.random() * 4) + 1);
+      instrument4 = str + 'strings_' + number + '.wav';
+
+      //Synth picker
+      number = Math.floor((Math.random() * 4) + 1);
+      instrument5 = str + 'synth_' + number + '.wav';
+
+      console.log(instrument1);
+      console.log(instrument2);
+      console.log(instrument3);
+      console.log(instrument4);
+      console.log(instrument5);
+
+      var sound1 = new Audio(instrument1);
+      var sound2 = new Audio(instrument2);
+      var sound3 = new Audio(instrument3);
+      var sound4 = new Audio(instrument4);
+      var sound5 = new Audio(instrument5);
+
+      //Change to playing gif
+      $('#img1').hide();
+      $('#img2').fadeIn();
+      sound1.play();
+      sound2.play();
+      sound3.play();
+      sound4.play();
+      sound5.play();
 
 
-    function playMusic(){
-      window.location.href = 'play.php';
-    }
+        }, sec * 1000);
+      });
 
-    </script>
-  
-  <input name="animation" type="hidden">
-  
-  </body>
-</html>
+      function go_back(){
+        window.location.href = 'index.php';
+      }
+
+</script>
